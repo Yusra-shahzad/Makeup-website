@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff8f7">
+<title>Glamora Beauty | Your Beauty, Your Glow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="announcement">✨ BEAUTY SALE — 20% OFF selected products · Use code <b>GLOW20</b> · Free delivery above Rs. 5,000</div>
+
+<header class="navbar">
+  <div class="nav-inner">
+    <button class="mobile-menu" id="menuBtn" aria-label="Menu">☰</button>
+    <a href="#home" class="logo">Glamora<span>Beauty.</span></a>
+    <nav id="navLinks">
+      <a href="#home">Home</a><a href="#categories">Categories</a><a href="#bestsellers">Best Sellers</a><a href="#shop">Shop</a><a href="#about">About</a>
+    </nav>
+    <div class="nav-actions">
+      <button id="searchToggle" aria-label="Search">⌕</button>
+      <button id="themeToggle" aria-label="Theme">☾</button>
+      <button id="wishlistBtn" aria-label="Wishlist">♡ <span id="wishCount">0</span></button>
+      <button id="cartBtn" aria-label="Cart">🛍 <span id="cartCount">0</span></button>
+    </div>
+  </div>
+  <div class="search-box" id="searchBox">
+    <input type="text" id="searchInput" placeholder="Search lipstick, serum, mascara...">
+    <button id="searchClose" aria-label="Close search">✕</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="hero-content reveal">
+      <span class="eyebrow">WELCOME TO GLAMORA BEAUTY</span>
+      <h1>Beauty begins<br>with <span>you.</span></h1>
+      <p>Discover your perfect glow with our collection of makeup and skincare essentials.</p>
+      <div class="hero-buttons">
+        <a href="#shop" class="primary-btn">Shop Collection ↗</a>
+        <a href="#about" class="secondary-btn">Discover More</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong data-count="12">0</strong><small>Products</small></div>
+        <div><strong>4.9/5</strong><small>Customer Rating</small></div>
+        <div><strong>100%</strong><small>Beauty Love</small></div>
+      </div>
+    </div>
+    <div class="hero-image reveal">
+      <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1000" alt="Luxury makeup collection">
+      <div class="floating-card"><span>✦</span><div><strong>Your daily glow</strong><small>Starts right here</small></div></div>
+    </div>
+  </section>
+
+  <section class="section" id="categories">
+    <div class="section-heading reveal">
+      <span class="eyebrow">EXPLORE THE BEAUTY</span>
+      <h2>Shop by <span>Category</span></h2>
+      <p>Everything you need to express your beauty.</p>
+    </div>
+    <div class="category-grid">
+      <button class="category-card reveal" data-category="Face"><img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=500" alt="Face"><span>Face Makeup</span></button>
+      <button class="category-card reveal" data-category="Lips"><img src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=500" alt="Lips"><span>Lip Collection</span></button>
+      <button class="category-card reveal" data-category="Eyes"><img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=500" alt="Eyes"><span>Eye Makeup</span></button>
+      <button class="category-card reveal" data-category="Skincare"><img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=500" alt="Skincare"><span>Skincare</span></button>
+    </div>
+  </section>
+
+  <section class="section best-section" id="bestsellers">
+    <div class="section-heading reveal">
+      <span class="eyebrow">CUSTOMER FAVOURITES</span>
+      <h2>Our Best <span>Sellers</span></h2>
+      <p>Beauty essentials everyone is loving.</p>
+    </div>
+    <div class="product-grid" id="bestProducts"></div>
+  </section>
+
+  <section class="section" id="shop">
+    <div class="section-heading reveal">
+      <span class="eyebrow">FIND YOUR FAVOURITE</span>
+      <h2>Explore Our <span>Collection</span></h2>
+      <p id="resultCount">Little beauty treasures for every day.</p>
+    </div>
+    <div class="shop-toolbar">
+      <div class="filters">
+        <button class="filter-btn active" data-filter="All">All</button>
+        <button class="filter-btn" data-filter="Face">Face</button>
+        <button class="filter-btn" data-filter="Lips">Lips</button>
+        <button class="filter-btn" data-filter="Eyes">Eyes</button>
+        <button class="filter-btn" data-filter="Skincare">Skincare</button>
+      </div>
+      <label class="price-filter">Max price: <b id="priceLabel">Rs. 3,000</b>
+        <input type="range" id="priceRange" min="500" max="3000" step="100" value="3000">
+      </label>
+      <select id="sortSelect" aria-label="Sort">
+        <option value="default">Sort: Featured</option>
+        <option value="low">Price: Low to High</option>
+        <option value="high">Price: High to Low</option>
+        <option value="rating">Top Rated</option>
+      </select>
+    </div>
+    <div class="product-grid" id="productGrid"></div>
+    <p class="empty-message" id="emptyMessage">No products found. Try another search or filter.</p>
+  </section>
+
+  <section class="offer-banner reveal">
+    <div>
+      <span class="eyebrow">A LITTLE BEAUTY TREAT</span>
+      <h2>Glow More.<br>Spend Less.</h2>
+      <p>Use code <b>GLOW20</b> at checkout for 20% off.</p>
+      <button class="primary-btn" id="copyCode">Copy Code GLOW20</button>
+    </div>
+    <div class="offer-decoration">20<span>% OFF</span></div>
+  </section>
+
+  <section class="section about-section" id="about">
+    <div class="about-image reveal"><img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=900" alt="Beauty products"></div>
+    <div class="about-content reveal">
+      <span class="eyebrow">OUR BEAUTY STORY</span>
+      <h2>Made for your<br><span>unique glow.</span></h2>
+      <p>At Glamora Beauty, makeup is more than products. It's a way to express yourself, celebrate your individuality and feel confident every day.</p>
+      <a href="#shop" class="primary-btn">Discover Glamora ↗</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading reveal">
+      <span class="eyebrow">LOVE NOTES</span>
+      <h2>What Our Customers <span>Say</span></h2>
+    </div>
+    <div class="review-grid">
+      <article class="review-card reveal"><div class="stars">★★★★★</div><p>"Beautiful products and such a lovely shopping experience. Absolutely love my purchase!"</p><strong>Sarah K.</strong><small>Verified Customer</small></article>
+      <article class="review-card reveal"><div class="stars">★★★★★</div><p>"The collection is gorgeous. I found my new favourite everyday lipstick here."</p><strong>Ayesha M.</strong><small>Verified Customer</small></article>
+      <article class="review-card reveal"><div class="stars">★★★★★</div><p>"The website is so easy to use, and the products look amazing. Highly recommended!"</p><strong>Hania R.</strong><small>Verified Customer</small></article>
+    </div>
+  </section>
+
+  <section class="newsletter">
+    <span class="eyebrow">STAY IN THE GLOW</span>
+    <h2>A little beauty in your inbox.</h2>
+    <p>Subscribe for beauty tips, new arrivals and special offers.</p>
+    <form id="newsletterForm">
+      <input type="email" id="newsletterEmail" placeholder="Enter your email address" required>
+      <button type="submit">Subscribe ↗</button>
+    </form>
+  </section>
+</main>
+
+<footer class="footer">
+  <div><a href="#home" class="logo">Glamora<span>Beauty.</span></a><p>Your beauty, your glow. Celebrate your unique style with Glamora Beauty.</p></div>
+  <div><h3>Quick Links</h3><a href="#home">Home</a><a href="#shop">Shop</a><a href="#categories">Categories</a><a href="#about">About Us</a></div>
+  <div><h3>Customer Care</h3><a href="#shop">Shopping</a><a href="#about">Our Story</a><a href="#newsletterForm">Newsletter</a><a href="mailto:hello@glamorabeauty.com">Contact Us</a></div>
+  <div><h3>Follow Us</h3><p>Instagram · Facebook · Pinterest</p><p>Made with ♡ for beauty lovers.</p></div>
+  <div class="copyright">© 2026 Glamora Beauty. All rights reserved.</div>
+</footer>
+
+<!-- Cart -->
+<div class="overlay" id="cartOverlay">
+  <aside class="drawer">
+    <div class="drawer-header"><h2>Your Shopping Bag 🛍</h2><button class="close-btn" data-close="cartOverlay">✕</button></div>
+    <div class="ship-bar"><p id="shipText"></p><div class="bar"><i id="shipFill"></i></div></div>
+    <div id="cartItems" class="drawer-items"></div>
+    <div class="cart-footer">
+      <div class="coupon"><input id="couponInput" placeholder="Coupon code"><button id="couponBtn">Apply</button></div>
+      <div class="sum"><span>Subtotal</span><span id="sumSub">Rs. 0</span></div>
+      <div class="sum" id="discRow" hidden><span>Discount</span><span id="sumDisc"></span></div>
+      <div class="sum"><span>Delivery</span><span id="sumShip"></span></div>
+      <div class="sum total"><strong>Total</strong><strong id="cartTotal">Rs. 0</strong></div>
+      <button id="checkoutBtn" class="primary-btn full-btn">Proceed to Checkout →</button>
+    </div>
+  </aside>
+</div>
+
+<!-- Wishlist -->
+<div class="overlay" id="wishlistOverlay">
+  <aside class="drawer">
+    <div class="drawer-header"><h2>Your Wishlist ♡</h2><button class="close-btn" data-close="wishlistOverlay">✕</button></div>
+    <div id="wishlistItems" class="drawer-items"></div>
+  </aside>
+</div>
+
+<!-- Quick view -->
+<div class="modal-overlay" id="quickView">
+  <div class="quick-modal"><button class="close-btn modal-close" data-close="quickView">✕</button><div id="quickContent"></div></div>
+</div>
+
+<!-- Checkout -->
+<div class="modal-overlay" id="checkoutModal">
+  <div class="quick-modal">
+    <button class="close-btn modal-close" data-close="checkoutModal">✕</button>
+    <div id="checkoutBody"></div>
+  </div>
+</div>
+
+<button id="toTop" aria-label="Back to top">↑</button>
+<div id="toast" class="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
